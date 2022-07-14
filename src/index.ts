@@ -177,6 +177,12 @@ export async function main(
       const xcodeLogs = await generateXcodeCoverageFiles(xcodeArchivePath)
       UploadLogger.verbose(`${xcodeLogs}`)
     }
+  } else {
+    const { xcodeArchivePath } = args
+
+    if (Boolean(xcodeArchivePath)) {
+      // TODO Warn that Xcode is not enabled but an Xcode argument was passed
+    }
   }
 
   let coverageFilePaths: string[] = []
