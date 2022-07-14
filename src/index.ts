@@ -167,6 +167,16 @@ export async function main(
     const gcovArgs: string[] = argAsArray(args.gcovArgs)
     const gcovLogs = await generateGcovCoverageFiles(projectRoot, gcovInclude, gcovIgnore, gcovArgs)
     UploadLogger.verbose(`${gcovLogs}`)
+  } else {
+    const interested = ['gcovInclude', 'gcovIgnore', 'gcovArgs'].filter((value) => args[value])
+
+    if (Boolean(interested.length)) {
+      if (interested.length > 1) {
+        // TODO Warn that gcov is not enabled but multiple (specific) gcov arguments were passed
+      } else {
+        // TODO Warn that gcov is not enabled but a (specific) gcov argument was passed
+      }
+    }
   }
 
   if (args.xcode) {
