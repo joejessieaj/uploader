@@ -170,7 +170,7 @@ export async function main(
   } else {
     const interested = ['gcovInclude', 'gcovIgnore', 'gcovArgs'].filter((value) => args[value])
 
-    if (Boolean(interested.length)) {
+    if (interested.length) {
       if (interested.length > 1) {
         // TODO Warn that gcov is not enabled but multiple (specific) gcov arguments were passed
       } else {
@@ -190,7 +190,7 @@ export async function main(
   } else {
     const { xcodeArchivePath } = args
 
-    if (Boolean(xcodeArchivePath)) {
+    if (xcodeArchivePath) {
       // TODO Warn that Xcode is not enabled but an Xcode argument was passed
     }
   }
