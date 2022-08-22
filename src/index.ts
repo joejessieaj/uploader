@@ -342,9 +342,11 @@ export async function main(
     UploadLogger.verbose(`${parameter}`)
   }
 
-  const validSlug =  checkSlug(buildParams.slug)
-  if (!validSlug) {
-    throw new Error(`Slug must follow the format of "<owner>/<repo>" or be blank. We detected "${buildParams.slug}"`)
+  if (hasToken !== true) {
+    const validSlug =  checkSlug(buildParams.slug)
+    if (!validSlug) {
+      throw new Error(`Slug must follow the format of "<owner>/<repo>" or be blank. We detected "${buildParams.slug}"`)
+    }
   }
 
   const query = webHelpers.generateQuery(buildParams)
